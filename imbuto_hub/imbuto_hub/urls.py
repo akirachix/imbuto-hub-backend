@@ -1,5 +1,5 @@
 """
-URL configuration for imbuto project.
+URL configuration for imbuto_hub project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
