@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class CooperativeOfficial(models.Model):
     official_id = models.AutoField(primary_key=True)
     full_name = models.CharField(max_length=100)
