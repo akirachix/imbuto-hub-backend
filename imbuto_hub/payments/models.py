@@ -9,7 +9,6 @@ class Payment(models.Model):
     farmer_id = models.ForeignKey(Farmer, on_delete=models.CASCADE, related_name='payments')
     payment_date = models.DateField()
     records_id = models.ManyToManyField(MilkRecords, related_name='payments')
-
     def __str__(self):
         return f"Payment {self.payment_id} - {self.farmer.first_name}"
 
