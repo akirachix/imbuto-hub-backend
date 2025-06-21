@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     'cooperativeOfficials',
 
-    'farmerDetails',
+    'FarmerDetails',
 
 
     'Payments',
