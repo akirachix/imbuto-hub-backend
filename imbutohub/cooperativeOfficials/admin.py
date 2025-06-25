@@ -4,3 +4,5 @@ from django.contrib import admin
 from .models import(CooperativeOfficial)
 admin.site.register(CooperativeOfficial)
 
+
+
