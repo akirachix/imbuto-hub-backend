@@ -38,7 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cooperativeOfficials',
+ feature/milk-Rcord-Api
     'FarmerDetails',
+
+
+    'FarmerDetails',
+
+
+develop
     'Payments',
     'milkRecords',
     'rest_framework',
