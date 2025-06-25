@@ -1,0 +1,45 @@
+from django.urls import reverse
+from rest_framework import status
+from rest_framework.test import APITestCase
+from FarmerDetails.models import Farmer
+
+class FarmerAPITestCase(APITestCase):
+    def setUp(self):
+        self.farmer = Farmer.objects.create(
+            first_name="John",
+            last_name="Doe",
+            gender="Male",
+            phone_number="0712345678",
+            email="john@example.com",
+            password="testpassword123",
+            national_id="123456789",
+            member_id="MID001"   # Added required member_id field
+        )
+        self.valid_payload = {
+            "first_name": "Alice",
+            "last_name": "Smith",
+            "gender": "Female",
+            "phone_number": "0799999999",
+            "email": "alice@example.com",
+            "password": "securepass",
+            "national_id": "987654321",
+            "member_id": "MID123"   # Added required member_id field
+        }
+
+    def test_create_farmer(self):
+        url = reverse('farmers-list')
+        response = self.client.post(url, self.valid_payload, format='json')
+        print("Create response data:", response.data)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Farmer.objects.count(), 2)
+
+    def test_update_farmer(self):
+        url = reverse('farmers-detail', kwargs={'pk': self.farmer.pk})
+        updated_data = self.valid_payload.copy()
+        updated_data["email"] = "updated@example.com"
+        updated_data["member_id"] = "MID002"  # Ensure member_id is present in update
+        response = self.client.put(url, updated_data, format='json')
+        print("Update response data:", response.data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.farmer.refresh_from_db()
+        self.assertEqual(self.farmer.email, "updated@example.com")
