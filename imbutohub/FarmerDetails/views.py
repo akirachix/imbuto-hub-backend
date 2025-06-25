@@ -1,17 +1,7 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import FarmerViewSet
-router = DefaultRouter()
-router.register(r"farmers", FarmerViewSet, basename="farmers")
-urlpatterns = [
-    path('', include(router.urls)),
-]
-
-
-
-
-
-
-
-
-
+from django.shortcuts import render
+from rest_framework import viewsets
+from FarmerDetails.models import Farmer
+from .serializer import FarmerDetailsSerializer
+class FarmerViewSet(viewsets.ModelViewSet):
+    queryset = Farmer.objects.all()
+    serializer_class = FarmerDetailsSerializer
