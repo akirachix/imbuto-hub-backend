@@ -1,6 +1,14 @@
+
+
+
 from rest_framework import serializers
-from FarmerDetails.models import Farmer
-class FarmerDetailsSerializer(serializers.ModelSerializer):
+from milkRecords.models import MilkRecord
+
+
+
+
+
+class MilkRecordSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Farmer
+        model = MilkRecord
         fields = '__all__'
