@@ -1,6 +1,9 @@
 from rest_framework import serializers
-from FarmerDetails.models import Farmer
-class FarmerDetailsSerializer(serializers.ModelSerializer):
+from cooperativeOfficials.models import CooperativeOfficial
+
+class CooperativeOfficialSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Farmer
+        model = CooperativeOfficial
         fields = '__all__'
+
+        

@@ -1,9 +1,8 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import FarmerViewSet
-router = DefaultRouter()
-router.register(r"farmers", FarmerViewSet, basename='farmers')
+from .views import CooperativeOfficialViewSet
 
-urlpatterns = [
-    path('', include(router.urls))
-]    
+router = DefaultRouter()
+router.register(r'cooperative-officials', CooperativeOfficialViewSet)
+
+urlpatterns = router.urls
