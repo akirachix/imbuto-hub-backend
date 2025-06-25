@@ -38,7 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cooperativeOfficials',
+
     'FarmerDetails',
+=======
+
+    'FarmerDetails',
+
+
+
     'Payments',
     'milkRecords',
     'rest_framework',
