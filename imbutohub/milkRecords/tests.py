@@ -12,7 +12,7 @@ from milkRecords.models import MilkRecord
 
 class MilkRecordAPITest(APITestCase):
     def setUp(self):
-        # Create related Farmer and CooperativeOfficial
+     
         self.farmer = Farmer.objects.create(
 
 
