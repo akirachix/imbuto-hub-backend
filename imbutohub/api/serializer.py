@@ -1,14 +1,11 @@
-
-
-
 from rest_framework import serializers
-from milkRecords.models import MilkRecord
 
 
 
+from Payments.models import Payment
 
 
-class MilkRecordSerializer(serializers.ModelSerializer):
+class PaymentsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MilkRecord
+        model = Payment
         fields = '__all__'

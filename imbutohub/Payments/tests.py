@@ -2,9 +2,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from .models import Payment
-from FarmerDetails.models import Farmer  
-from milkRecords.models import MilkRecord 
-from cooperativeOfficials.models import CooperativeOfficial  
+ 
 
 class PaymentAPITests(APITestCase):
 
