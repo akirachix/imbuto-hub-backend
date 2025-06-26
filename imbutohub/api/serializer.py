@@ -1,7 +1,5 @@
 from rest_framework import serializers
 
-
-
 from Payments.models import Payment
 
 
