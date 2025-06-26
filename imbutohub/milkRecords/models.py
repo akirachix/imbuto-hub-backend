@@ -10,4 +10,4 @@ class MilkRecord(models.Model):
     date = models.DateField()
     cooperative_official_id = models.ForeignKey('cooperativeOfficials.CooperativeOfficial', on_delete=models.CASCADE, null=True, blank=True, related_name='milk_records' )  
     def __str__(self):
-        return f"MilkRecord {self.record_id} - {self.farmer.first_name}"
+        return f"MilkRecord {self.record_id} - {self.farmer_id.first_name}"
