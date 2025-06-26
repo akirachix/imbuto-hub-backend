@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from FarmerDetails.models import Farmer
 from cooperativeOfficials.models import CooperativeOfficial
-from .serializers import FarmerDetailsSerializer, CooperativeOfficialSerializer
+from .serializers import CooperativeOfficialSerializer
 
 
 class CooperativeOfficialViewSet(viewsets.ModelViewSet):
