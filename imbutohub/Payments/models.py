@@ -12,4 +12,4 @@ class Payment(models.Model):
 
 
     def __str__(self):
-        return f"Payment {self.payment_id} - {self.farmer.first_name}"
+        return f"Payment {self.payment_id} - {self.farmer_id.first_name}"
