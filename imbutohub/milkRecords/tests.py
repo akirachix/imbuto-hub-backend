@@ -42,7 +42,7 @@ class MilkRecordAPITest(APITestCase):
             price_per_ltr=50.00,
             amount_to_pay=500.00,
             date=date.today(),
-            official_id=self.official,
+            cooperative_official_id=self.official,
         )
         self.url = reverse('milkrecords-list')
 
@@ -53,12 +53,13 @@ class MilkRecordAPITest(APITestCase):
 
     def test_create_milkrecord(self):
         data = {
-            "farmer_id": self.farmer.id,
+            "farmer_id": self.farmer.farmer_id,
             "quantity_ltrs": "12.5",
             "price_per_ltr": "45.00",
             "amount_to_pay": "562.50",
             "date": str(date.today()),
-            "official_id": self.official.id
+            "cooperative_official_id": self.official.official_id
+           
         }
         response = self.client.post(self.url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -78,7 +79,7 @@ class MilkRecordAPITest(APITestCase):
             "price_per_ltr": "48.00",
             "amount_to_pay": "720.00",
             "date": str(date.today()),
-            "official_id": self.official.official_id
+            "cooperative_official_id": self.official.official_id
         }
         response = self.client.put(url, data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
