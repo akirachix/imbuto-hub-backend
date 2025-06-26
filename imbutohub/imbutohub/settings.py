@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'milkRecords',
     'rest_framework',
     'api',
+    'users'
 
 
 ]
