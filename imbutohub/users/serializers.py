@@ -8,13 +8,13 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate(self, attrs):
-        print("Custom validation running!")  # Add this line
+        print("Custom validation running!")  
         user_type = attrs.get('user_type')
         errors = {}
         
 
         farmer_fields = ['first_name', 'last_name', 'member_id', 'national_id', 'gender', 'phone_number']
-        official_fields = ['full_name', 'username', 'role']
+        official_fields = ['first_name','last_name', 'username']
 
         if user_type == 'farmer':
             for field in farmer_fields:

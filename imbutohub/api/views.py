@@ -1,7 +1,7 @@
 from rest_framework import viewsets
-from cooperativeOfficials.models import CooperativeOfficial
-from .serializers import CooperativeOfficialSerializer
+from users.models import User 
+from .serializers import UserSerializer  
 
-class CooperativeOfficialViewSet(viewsets.ModelViewSet):
-    queryset = CooperativeOfficial.objects.all()
-    serializer_class = CooperativeOfficialSerializer
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

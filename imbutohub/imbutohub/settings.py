@@ -36,14 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'cooperativeOfficials',
-    'FarmerDetails',
-    'Payments',
-    'milkRecords',
     'rest_framework',
     'api',
-    'users'
+    'users',
 
 
 ]

@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from cooperativeOfficials.models import CooperativeOfficial
-
-class CooperativeOfficialSerializer(serializers.ModelSerializer):
+from users.models import User  
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CooperativeOfficial
+        model = User
         fields = '__all__'
