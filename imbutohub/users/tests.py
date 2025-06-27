@@ -42,15 +42,22 @@ class UserEndpointTest(APITestCase):
         self.assertEqual(User.objects.get().user_type, "cooperative_official")
 
     def test_list_users(self):
-        User.objects.create(user_type="farmer", first_name="A", last_name="B", email="a@b.com", password="a", member_id="123", national_id="nid", gender="m", phone_number="111")
-        User.objects.create(user_type="cooperative_official", full_name="C D", username="cd", email="c@d.com", password="b", role="manager")
+        User.objects.create(user_type="farmer", first_name="John", last_name="Kiptoo", email="chepchep@kiptoo.com", password="kiptoo123", member_id="001", national_id="kiptooid", gender="m", phone_number="111")
+        User.objects.create(user_type="cooperative_official", full_name="Peter Kamande", username="peterkamande", email="peter@kamande.com", password="peter123", role="manager")
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 2)
 
     def test_filter_by_user_type(self):
-        User.objects.create(user_type="farmer", first_name="A", last_name="B", email="a@b.com", password="a", member_id="123", national_id="nid", gender="m", phone_number="111")
-        User.objects.create(user_type="cooperative_official", full_name="C D", username="cd", email="c@d.com", password="b", role="manager")
+        User.objects.create(user_type="farmer", first_name="John", last_name="Kiptoo", email="chepchep@kiptoo.com", password="kiptoo123", member_id="001", national_id="kiptooid", gender="m", phone_number="111")
+        User.objects.create(
+    user_type="cooperative_official",
+    first_name="Peter",
+    last_name="Kamande",
+    username="peterkamande",
+    email="peter@kamande.com",
+    password="peter123"
+)
         response = self.client.get(self.url + '?user_type=farmer')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)

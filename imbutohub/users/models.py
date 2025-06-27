@@ -17,7 +17,8 @@ class User(models.Model):
     gender = models.CharField(max_length=15, null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)
 
-
+    full_name = models.CharField(max_length=255, blank=True, default = "")
+    role = models.CharField(max_length=100, blank=True, default = "")
     username = models.CharField(max_length=100, unique=True, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
