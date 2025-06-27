@@ -6,11 +6,11 @@ class UserModelTest(TestCase):
     def setUp(self):
         self.farmer = User.objects.create(
             user_type="farmer",
-            first_name="John",
-            last_name="Doe",
-            email="john.doe@example.com",
-            username="johnny",
-            password="testpassword123",
+            first_name="Mercy",
+            last_name="King",
+            email="mercy.king@example.com",
+            username="mercy",
+            password="password123",
             member_id="F123",
             national_id="123456789",
             gender="male",
@@ -18,11 +18,11 @@ class UserModelTest(TestCase):
         )
         self.official = User.objects.create(
             user_type="cooperative_official",
-            first_name="Jane",
-            last_name="Smith",
-            email="jane.smith@example.com",
-            username="jsmith",
-            password="testpassword123",
+            first_name="joy",
+            last_name="Wanjiku",
+            email="joy.wanjiku@example.com",
+            username="joywanji",
+            password="password1723",
             member_id="O321",
             national_id="987654321",
             gender="female",
@@ -39,34 +39,33 @@ class UserModelTest(TestCase):
     def test_email_unique(self):
         with self.assertRaises(Exception):
             User.objects.create(
-                user_type="farmer",
-                first_name="Dup",
-                last_name="Email",
-                email="john.doe@example.com",  
-                username="dupemail",
-                password="testpassword123"
+            user_type="farmer",
+            first_name="Mercy",
+            last_name="King",
+            email="mercy.king@example.com",
+            username="mercy",
+            password="password123"
             )
 
     def test_username_unique(self):
         with self.assertRaises(Exception):
             User.objects.create(
-                user_type="farmer",
-                first_name="Dup",
-                last_name="Username",
-                email="dupuser@example.com",
-                username="johnny",  # duplicate
-                password="testpassword123"
+            user_type="cooperative_official",
+            first_name="joy",
+            last_name="Wanjiku",
+            email="joy.wanjiku@example.com",
+            username="joywanji",
+            password="password1723"
             )
 
     def test_gender_choices(self):
         user = User.objects.create(
             user_type="farmer",
-            first_name="Sam",
-            last_name="Smith",
-            email="sam.smith@example.com",
-            username="samsmith",
-            password="testpassword123",
-            gender="other"
+            first_name="Mercy",
+            last_name="King",
+            email="mercy.king@example.com",
+            username="mercy",
+            password="password123",
         )
         self.assertEqual(user.gender, "other")
 
