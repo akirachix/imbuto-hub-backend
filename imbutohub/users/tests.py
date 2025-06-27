@@ -33,7 +33,7 @@ class UserModelTest(TestCase):
         self.assertEqual(str(self.farmer), "John Doe")
 
     def test_official_str(self):
-        # .full_name does not exist in the model; should fallback to username, then email
+        
         self.assertEqual(str(self.official), "jsmith")
 
     def test_email_unique(self):
@@ -42,7 +42,7 @@ class UserModelTest(TestCase):
                 user_type="farmer",
                 first_name="Dup",
                 last_name="Email",
-                email="john.doe@example.com",  # duplicate
+                email="john.doe@example.com",  
                 username="dupemail",
                 password="testpassword123"
             )
