@@ -7,11 +7,19 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+
     def validate(self, attrs):
         print("Custom validation running!")  
         user_type = attrs.get('user_type')
         errors = {}
-        
+
+    
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        user = super().create(validated_data)
+        user.set_password(password)  
+        user.save()
+        return user    
 
         farmer_fields = ['first_name', 'last_name', 'member_id', 'national_id', 'gender', 'phone_number']
         official_fields = ['first_name','last_name', 'username']
