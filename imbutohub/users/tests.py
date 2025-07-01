@@ -1,6 +1,5 @@
 from django.test import TestCase
 
-# Create your tests here.
 from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
@@ -13,14 +12,14 @@ class UserEndpointTest(APITestCase):
     def test_create_farmer(self):
         data = {
             "user_type": "farmer",
-            "first_name": "John",
-            "last_name": "Doe",
+            "first_name": "James",
+            "last_name": "Kimani",
             "member_id": "M123",
             "national_id": "NID12345",
             "email": "johnfarmer@example.com",
             "password": "password123",
             "gender": "male",
-            "phone_number": "1234567890"
+            "phone_number": "0780976543"
         }
         response = self.client.post(self.url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -30,8 +29,8 @@ class UserEndpointTest(APITestCase):
     def test_create_cooperative_official(self):
         data = {
             "user_type": "cooperative_official",
-            "full_name": "Jane Admin",
-            "username": "adminjane",
+            "full_name": "Jane Atieno",
+            "username": "atienojane",
             "email": "janeofficial@example.com",
             "password": "password456",
             "role": "Admin"
@@ -63,4 +62,3 @@ class UserEndpointTest(APITestCase):
         self.assertEqual(len(response.data), 1)
         self.assertEqual(response.data[0]['user_type'], 'farmer')
 
-        
