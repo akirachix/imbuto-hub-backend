@@ -4,5 +4,8 @@ __pycache__/
 db.sqlite3
 imbutoenv/
 
+*.sqlite3
+staticfiles/
+venv/
 
 
