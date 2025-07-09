@@ -125,3 +125,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# MTN_MOMO = {
+#     "subscription_key": "b13ec776de484657809b8a11b039651b",
+#     "user_id": "your_user_id_here",
+#     "user_secret": "your_user_secret_here",
+#     "base_url": "https://sandbox.momodeveloper.mtn.com",  # Change to live when ready
+#     "target_environment": "sandbox",  # Change to "production" for live
+#     "api_key": "your_base64_encoded_userid_and_secret"  # More info below
+# }
+
+
+
+
+
+
