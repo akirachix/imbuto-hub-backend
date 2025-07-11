@@ -12,3 +12,5 @@ class UserViewSet(viewsets.ModelViewSet):
         if user_type:
             queryset = queryset.filter(user_type=user_type)
         return queryset
+
+
