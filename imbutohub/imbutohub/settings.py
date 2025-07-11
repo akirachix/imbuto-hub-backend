@@ -23,6 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c&ebqwx1st*@#7#4v!y)e&tr!l*dt&^i8e+yv)01bpg%=m(le%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+SECRET_KEY = 'django-insecure-c&ebqwx1st*@#7#4v!y)e&tr!l*dt&^i8e+yv)01bpg%=m(le%'
+
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -39,6 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles', 
     'Payments',
     'rest_framework',
+
+    'api',
+    'rest_framework',
+    'users',
+    'api',
+
     
 
 
@@ -123,6 +135,12 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+STATIC_URL = 'static/'
+
+
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
