@@ -47,9 +47,9 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'api',
-    'rest_framework',
+   'milkRecords',
     'users',
-    'api',
+  
 
     
 

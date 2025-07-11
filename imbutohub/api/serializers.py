@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from users.models import User  
+from users.models import User 
+from  Payments.models import Payment
+from milkRecords.models import MilkRecord
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,3 +45,14 @@ class UserSerializer(serializers.ModelSerializer):
             user.set_password(password)
             user.save()
         return user
+
+class PaymentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = '__all__'
+
+from milkRecords.models import MilkRecord
+class MilkRecordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MilkRecord
+        fields = '__all__'
