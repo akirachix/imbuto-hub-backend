@@ -42,16 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'cooperativeOfficials',
-    'FarmerDetails',
+    'django.contrib.staticfiles', 
     'Payments',
-    'milkRecords',
     'rest_framework',
+
     'api',
     'rest_framework',
     'users',
     'api',
+
     
 
 
@@ -144,3 +143,10 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+
+
