@@ -1,14 +1,25 @@
+from rest_framework import status
+from rest_framework.response import Response
 from rest_framework import viewsets
 from users.models import User
 from api.serializers import UserSerializer
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        user_type = self.request.query_params.get('user_type')
-        if user_type:
-            queryset = queryset.filter(user_type=user_type)
-        return queryset
+
+
+
+
+
+
+
+

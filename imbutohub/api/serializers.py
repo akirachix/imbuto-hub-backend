@@ -7,9 +7,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = [
-            "id", "first_name", "last_name", "user_type", "email",
-            "password", "member_id", "national_id", "gender", "phone_number",
-            "full_name", "role", "username"
+            "member_id", "first_name", "last_name", "user_type", "email",
+            "password", "national_id", "gender", "phone_number", "username"
         ]
         extra_kwargs = {
             "password": {"write_only": True},
@@ -20,7 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
         user_type = attrs.get('user_type')
         errors = {}
 
-        farmer_fields = ['first_name', 'last_name', 'member_id', 'national_id', 'gender', 'phone_number']
+        farmer_fields = ['first_name', 'last_name', 'national_id', 'gender', 'phone_number']
         official_fields = ['first_name', 'last_name', 'username']
 
         if user_type == 'farmer':
@@ -37,6 +36,10 @@ class UserSerializer(serializers.ModelSerializer):
         if errors:
             raise serializers.ValidationError(errors)
         return attrs
+        
+        if User.objects.filter(member_id=value).exists():
+            raise serializers.ValidationError("A user with member_id already exists.")
+        return value
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
@@ -56,3 +59,20 @@ class MilkRecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = MilkRecord
         fields = '__all__'
+
+from rest_framework import serializers
+
+
+class PaymentSerializer(serializers.ModelSerializer):
+  class Meta:
+      model = Payment
+      fields = "__all__"
+
+
+class STKPushSerializer(serializers.Serializer):
+  phone_number = serializers.CharField()
+  amount = serializers.DecimalField(max_digits=10, decimal_places=2)
+  account_reference = serializers.CharField()
+  transaction_desc = serializers.CharField()
+
+

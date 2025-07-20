@@ -45,16 +45,32 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles', 
     'Payments',
     'rest_framework',
-
+# 'rest_framework.authtoken',
     'api',
    'milkRecords',
     'users',
   
 
-    
 
 
 ]
+
+# AUTH_USER_MODEL = 'users.User'
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES':[
+#         'rest_framework.authentication.TokenAuthentication',
+#     ],
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ],
+
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     ]
+
+# }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -143,6 +159,18 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+DARAJA_CONSUMER_KEY = 'eF0KGRDuPyiAzyzvGd2AWv5l7I0tE1R8HpxtGKm5HXPT92EK'
+DARAJA_CONSUMER_SECRET = 'YxBsCc0uEaSH2RJktLi8eZsAaQmg0ryzVRcd2b9Lfk4uS6Hs8GKomVEBTnMTZV4a'
+DARAJA_SHORTCODE = '174379'
+DARAJA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+DARAJA_CALLBACK_URL = 'https://1234abcd.ngrok.io/api/daraja-callback/'
 
 
 
