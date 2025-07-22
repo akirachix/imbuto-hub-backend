@@ -1,6 +1,9 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.db.models.functions import Substr
+from django.db.models import IntegerField
+
 
 from django.db.models import Max
 class User(AbstractUser):
@@ -40,8 +43,10 @@ class User(AbstractUser):
             prefix = 'F' if self.user_type == 'farmer' else 'C'
 
             max_member = User.objects.filter(user_type=self.user_type, member_id__startswith=prefix).aggregate(
-                max_num = Max(models.functions.Cast(models.Substr('member_id',2), models.IntegerField()))
-            )['max_num']
+    max_num=Max(
+        models.functions.Cast(Substr('member_id', 2), IntegerField())
+    )
+)['max_num']
 
             next_num = (max_member or 0) + 1
             self.member_id = f"{prefix}{next_num:03d}"
