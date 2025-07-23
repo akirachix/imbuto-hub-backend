@@ -21,6 +21,7 @@ from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 
 DATABASES = {
@@ -29,10 +30,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-# Update DATABASES['default'] from the environment config (if available)
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
+
+
+# Update DATABASES['default'] from the environment config (if available)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -70,6 +72,7 @@ INSTALLED_APPS = [
     'api',
    'milkRecords',
     'users',
+    'corsheaders',
   
 
 
@@ -103,7 +106,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
+CORS_ALLOW_ALL_ORIGINS=True
 
 ROOT_URLCONF = 'imbutohub.urls'
 
@@ -128,12 +134,7 @@ WSGI_APPLICATION = 'imbutohub.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
 
 
 # Password validation
@@ -186,18 +187,12 @@ STATICFILES_DIRS = (
 )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-
-
-
-DARAJA_CONSUMER_KEY = 'eF0KGRDuPyiAzyzvGd2AWv5l7I0tE1R8HpxtGKm5HXPT92EK'
-DARAJA_CONSUMER_SECRET = 'YxBsCc0uEaSH2RJktLi8eZsAaQmg0ryzVRcd2b9Lfk4uS6Hs8GKomVEBTnMTZV4a'
-DARAJA_SHORTCODE = '174379'
-DARAJA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
-DARAJA_CALLBACK_URL = 'https://1234abcd.ngrok.io/api/daraja-callback/'
-
+DARAJA_CONSUMER_KEY = os.getenv('DARAJA_CONSUMER_KEY')
+DARAJA_CONSUMER_SECRET = os.getenv('DARAJA_CONSUMER_SECRET')
+DARAJA_SHORTCODE = os.getenv('DARAJA_SHORTCODE')
+DARAJA_PASSKEY = os.getenv('DARAJA_PASSKEY')
+DARAJA_CALLBACK_URL = os.getenv('DARAJA_CALLBACK_URL')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 
