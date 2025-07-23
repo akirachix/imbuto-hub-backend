@@ -3,19 +3,10 @@ env/
 db.sqlite3
 imbutoenv/
 __pycache__/
-*.pyc/
-imbutoenv/
 db.sqlite3
 staticfiles/
-/ngrok-stable-linux-amd64.zip/
-/ngrok-stable-linux-amd64.zip/
-/ngrok-stable-linux-amd64.zip/
-/ngrok-stable-linux-amd64.zip/
-/ngrok-stable-linux-amd64.zip/
-# /ngrok-stable-linux-amd64.zip.2/
-/ngrok-stable-linux-amd64.zip.2/
-/ngrok-stable-linux-amd64.zip.2/
-/ngrok-stable-linux-amd64.zip.1/
-/ngrok-stable-linux-amd64.zip/
+
 /ngrok-stable-linux-amd64.zip/
 /ngrok/
+/ngrok-stable-linux-amd64.zip.2/
+/ngrok-stable-linux-amd64.zip.1/

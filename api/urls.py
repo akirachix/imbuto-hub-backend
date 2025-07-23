@@ -31,7 +31,7 @@ urlpatterns = [
    path('api/daraja/stk-push/', STKPushView.as_view(), name='daraja-stk-push'),
    path('daraja/callback/', daraja_callback, name='daraja-callback'),
    path('stkpush/', STKPushView.as_view(), name='stkpush'),
-   path('daraja/callback/', daraja_callback, name='daraja_callback'),
+path('daraja/callback/', daraja_callback, name='daraja_callback'),
 ]
 
 
