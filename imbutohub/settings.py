@@ -1,3 +1,8 @@
+import dj_database_url
+
+
+
+
 """
 Django settings for imbutohub project.
 
@@ -18,6 +23,16 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # or 'django.db.backends.postgresql' etc.
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# Update DATABASES['default'] from the environment config (if available)
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
