@@ -36,8 +36,7 @@ class UserEndpointTest(APITestCase):
             "last_name": "Atieno",         
             "username": "atienojane",
             "email": "janeofficial@example.com",
-            "password": "password456",
-            "role": "Admin"
+            "password": "password456"
         }
         response = self.client.post(self.url, data, format='json')
         if response.status_code != status.HTTP_201_CREATED:
@@ -63,8 +62,7 @@ class UserEndpointTest(APITestCase):
             full_name="Peter Kamande",
             username="peterkamande",
             email="peter@kamande.com",
-            password="peter123",
-            role="manager"
+            password="peter123"
         )
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
