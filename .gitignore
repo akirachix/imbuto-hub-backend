@@ -5,8 +5,11 @@ imbutoenv/
 __pycache__/
 db.sqlite3
 staticfiles/
+.en
+.env
 
 /ngrok-stable-linux-amd64.zip/
 /ngrok/
 /ngrok-stable-linux-amd64.zip.2/
 /ngrok-stable-linux-amd64.zip.1/
+
