@@ -1,19 +1,8 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import MilkRecordViewSet
-from .views import PaymentViewSet,UserViewSet
-from .views import STKPushView, daraja_callback
-
-from django.urls import path ,include
-from rest_framework.routers import DefaultRouter
+from .views import UserViewSet
 from .views import PaymentViewSet, STKPushView, daraja_callback
-
-
-
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-# from .views import  OrderViewSet, STKPushView, daraja_callback
-
 
 
 
@@ -21,9 +10,6 @@ router =DefaultRouter()
 
 
 router.register(r"payments", PaymentViewSet, basename="payments")
-# router.register(r"orders", OrderViewSet, basename="orders")
-
-
 
 
 urlpatterns = [
