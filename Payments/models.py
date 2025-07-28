@@ -10,4 +10,8 @@ class Payment(models.Model):
     records_id = models.ManyToManyField('milkRecords.MilkRecord', related_name='payments')
 
     def __str__(self):
-        return f"Payment {self.payment_id} - {self.member_id.full_name}"
+        try:
+            member_name = self.member_id.full_name or "Unknown Member"
+        except AttributeError:
+            member_name = "Unknown Member"
+        return f"Payment {self.payment_id} - {member_name}"

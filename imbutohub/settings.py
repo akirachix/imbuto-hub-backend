@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'Payments',
     'rest_framework',
     'api',
+    'rest_framework.authtoken',
     'milkRecords',
     'users',
     'corsheaders',
@@ -52,9 +53,37 @@ INSTALLED_APPS = [
 
 
 
+
+
+
+AUTH_USER_MODEL = 'users.User'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+   
+}
+
+
+AUTHENTICATION_BACKENDS = [
+    'users.authentication.PhoneNumberPasswordBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+
+
+
+
+
+
+
+
+
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', 
+    
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
