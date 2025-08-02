@@ -9,9 +9,7 @@ class MilkRecord(models.Model):
     quantity= models.DecimalField(max_digits=10, decimal_places=2)
     amount_to_pay = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField()
-    # def __str__(self):
-    #     return f"MilkRecord {self.record_id} - {self.member_id.first_name}"
-
+   
     def __str__(self):
         first_name = self.member_id.first_name or "Unknown"
         return f"MilkRecord {self.record_id} - {first_name}"
