@@ -27,3 +27,4 @@ urlpatterns = [
    path('api/daraja/stk-push/', STKPushView.as_view(), name='daraja-stk-push'),
     
 ]
+

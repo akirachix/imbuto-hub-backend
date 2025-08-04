@@ -1,29 +1,28 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User
-class CustomUserAdmin(UserAdmin):
-    list_display = ('username', 'email', 'user_type', 'gender', 'member_id', 'is_staff')
-    fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('user_type', 'gender', 'member_id', 'national_id', 'phone_number')}),
+from django.utils.translation import gettext_lazy as _
+
+class UserAdmin(BaseUserAdmin):
+    model = User
+    list_display = ('member_id', 'user_type', 'is_superuser', 'is_staff')
+    list_filter = ('is_staff', 'is_superuser', 'user_type')
+    search_fields = ('member_id', 'first_name', 'last_name')
+
+    fieldsets = (
+        (None, {'fields': ('member_id', 'password')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'user_type')}),
+        (_('Permissions'), {
+            'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
+        }),
+        (_('Important dates'), {'fields': ('last_login',)}),
     )
-    add_fieldsets = UserAdmin.add_fieldsets + (
-        (None, {'fields': ('user_type', 'gender')}),
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('member_id', 'password', 'first_name', 'last_name'),
+        }),
     )
-admin.site.register(User, CustomUserAdmin)
+    ordering = ('member_id',)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+admin.site.register(User, UserAdmin)
