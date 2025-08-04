@@ -2,23 +2,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import MilkRecordViewSet
 from .views import UserViewSet
-from .views import PaymentViewSet, STKPushView, daraja_callback
+from .views import PaymentViewSet, STKPushView, daraja_callback,Login,RegisterView
 
-
-
-router =DefaultRouter()
-
-
-router.register(r"payments", PaymentViewSet, basename="payments")
-
-
-urlpatterns = [
-   path("", include(router.urls)),
-   path('api/daraja/stk-push/', STKPushView.as_view(), name='daraja-stk-push'),
-   path('daraja/callback/', daraja_callback, name='daraja-callback'),
-   path('stkpush/', STKPushView.as_view(), name='stkpush'),
-path('daraja/callback/', daraja_callback, name='daraja_callback'),
-]
 
 
 
@@ -27,9 +12,17 @@ router = DefaultRouter()
 router.register(r'payments', PaymentViewSet)
 router.register(r'users', UserViewSet, basename='user')
 router.register(r"milkrecords", MilkRecordViewSet, basename='milkrecords')
+router.register(r"payments", PaymentViewSet, basename="payments")
+
+  
+
+
 urlpatterns = [
-    path('', include(router.urls)),
-    
-
-]    
-
+   path("", include(router.urls)),
+   path('api/daraja/stk-push/', STKPushView.as_view(), name='daraja-stk-push'),
+   path('daraja/callback/', daraja_callback, name='daraja-callback'),
+   path('stkpush/', STKPushView.as_view(), name='stkpush'),
+path('daraja/callback/', daraja_callback, name='daraja_callback'),
+path('login/' , Login.as_view(), name= 'login'),
+path('register/', RegisterView.as_view(), name= 'register')
+]
